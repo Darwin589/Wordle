@@ -23,10 +23,10 @@ public class Wordle {
 
     public void enterAction(String s) {
         if(isLegalWord(s) == true){
-            gw.showMessage("good boy");
+            gw.showMessage("Legal word good job");
         }
         else{
-            gw.showMessage("bad boy");
+            gw.showMessage("try again, not a legal word");
         }
         }
     private boolean isLegalWord(String word){
