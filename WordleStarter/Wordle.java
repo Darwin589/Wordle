@@ -23,7 +23,8 @@ public class Wordle {
 
     public void enterAction(String s) {
         if(isLegalWord(s) == true){
-            gw.showMessage("Legal word good job");
+            correction(s);
+            gw.showMessage("Legal word, good job");
         }
         else{
             gw.showMessage("try again, not a legal word");
@@ -49,18 +50,76 @@ public class Wordle {
     }
         return false;
     }
+    private void correction(String w){
+        if(isLegalWord(w) == true){
+            int row= 0;
+            for(int c = 0;c < 6;c++){
+                if(gw.getSquareLetter(0,c).equals(Word.substring(0,1))){
+                    gw.setSquareColor(0,0, WordleGWindow.CORRECT_COLOR);
+                }
+                else if(Word.indexOf(gw.getSquareLetter(0,c))!= -1){
+                    gw.setSquareColor(0,0, WordleGWindow.PRESENT_COLOR);
+                }
+                else {
+                    gw.setSquareColor(0,0, WordleGWindow.MISSING_COLOR);
+                }
 
-    
+                if(gw.getSquareLetter(0,c).equals(Word.substring(1,2))){
+                    gw.setSquareColor(0,1, WordleGWindow.CORRECT_COLOR);
+                }
+                else if(Word.indexOf(gw.getSquareLetter(0,c))!= -1){
+                    gw.setSquareColor(0,1, WordleGWindow.PRESENT_COLOR);
+                }
+                else {
+                    gw.setSquareColor(0,1, WordleGWindow.MISSING_COLOR);
+                }
+
+                if(gw.getSquareLetter(0,c).equals(Word.substring(2,3))){
+                    gw.setSquareColor(0,2, WordleGWindow.CORRECT_COLOR);
+                }
+                else if(Word.indexOf(gw.getSquareLetter(0,c))!= -1){
+                    gw.setSquareColor(0,2, WordleGWindow.PRESENT_COLOR);
+                }
+                else {
+                    gw.setSquareColor(0,2, WordleGWindow.MISSING_COLOR);
+                }
+
+                if(gw.getSquareLetter(0,c).equals(Word.substring(3,4))){
+                    gw.setSquareColor(0,3, WordleGWindow.CORRECT_COLOR);
+                }
+                else if(Word.indexOf(gw.getSquareLetter(0,c))!= -1){
+                    gw.setSquareColor(0,3, WordleGWindow.PRESENT_COLOR);
+                }
+                else {
+                    gw.setSquareColor(0,3, WordleGWindow.MISSING_COLOR);
+                }
+
+                if(gw.getSquareLetter(0,c).equals(Word.substring(4))){
+                    gw.setSquareColor(0,4, WordleGWindow.CORRECT_COLOR);
+                }
+                else if(Word.indexOf(gw.getSquareLetter(0,c))!= -1){
+                    gw.setSquareColor(0,4, WordleGWindow.PRESENT_COLOR);
+                }
+                else {
+                    gw.setSquareColor(0,4, WordleGWindow.MISSING_COLOR);
+                }
+            }
+            
+
+        }
+    }
+    static private void changeWord(){
+        Word = random[(int)(Math.random()*WordleDictionary.FIVE_LETTER_WORDS.length+1)];
+
+    }
+     static String [] random = WordleDictionary.FIVE_LETTER_WORDS;
+     static String Word= random[(int)(Math.random()*WordleDictionary.FIVE_LETTER_WORDS.length+1)]; 
 
 /* Startup code */
 
     public static void main(String[] args) {
         new Wordle().run();
-       gw.setSquareLetter(0,0,"Z");
-       gw.setSquareLetter(0,1,"A");
-       gw.setSquareLetter(0,2,"I");
-       gw.setSquareLetter(0,3,"D");
-       gw.setSquareLetter(0,4,"S");
+
     }
 
 /* Private instance variables */
