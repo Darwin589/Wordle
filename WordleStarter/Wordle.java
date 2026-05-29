@@ -58,18 +58,21 @@ public class Wordle {
             for(int c = 0;c < 6;c++){
                 if(gw.getSquareLetter(row,c).equalsIgnoreCase(Word.substring(c,c+1))){
                     gw.setSquareColor(row,c, WordleGWindow.CORRECT_COLOR);
+                    gw.setKeyColor(gw.getSquareLetter(row,c),WordleGWindow.CORRECT_COLOR);
                 }
                 else if(Word.toUpperCase().indexOf(gw.getSquareLetter(row,c))!= -1){
                     String temp1 = Word.substring(Word.toUpperCase().indexOf(gw.getSquareLetter(row,c)));
                     int i =0;
                     while(temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c))!= -1){
                         i = temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c));
-                        gw.setSquareColor(row,c, WordleGWindow.PRESENT_COLOR);
-                        temp1 = temp1.substring(temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c)));
+                        gw.setSquareColor(row,i, WordleGWindow.PRESENT_COLOR);
+                        gw.setKeyColor(gw.getSquareLetter(row,c),WordleGWindow.MISSING_COLOR);
+                        temp1 = temp1.substring(Word.toUpperCase().indexOf(gw.getSquareLetter(row,c)));
                     }
                 }
                 else {
                     gw.setSquareColor(row,c, WordleGWindow.MISSING_COLOR);
+                    gw.setKeyColor(gw.getSquareLetter(row,c),WordleGWindow.MISSING_COLOR);
                 }
             }
             
