@@ -7,7 +7,7 @@
 
 import edu.willamette.cs1.wordle.WordleDictionary;
 import edu.willamette.cs1.wordle.WordleGWindow;
-import java.util.*;
+
 
 public class Wordle {
 
@@ -64,7 +64,7 @@ public class Wordle {
                     int i =0;
                     while(temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c))!= -1){
                         i = temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c));
-                        gw.setSquareColor(row,i, WordleGWindow.PRESENT_COLOR);
+                        gw.setSquareColor(row,c, WordleGWindow.PRESENT_COLOR);
                         temp1 = temp1.substring(temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c)));
                     }
                 }
