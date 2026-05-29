@@ -60,7 +60,13 @@ public class Wordle {
                     gw.setSquareColor(row,c, WordleGWindow.CORRECT_COLOR);
                 }
                 else if(Word.toUpperCase().indexOf(gw.getSquareLetter(row,c))!= -1){
-                    gw.setSquareColor(row,c, WordleGWindow.PRESENT_COLOR);
+                    String temp1 = Word.substring(Word.toUpperCase().indexOf(gw.getSquareLetter(row,c)));
+                    int i =0;
+                    while(temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c))!= -1){
+                        i = temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c));
+                        gw.setSquareColor(row,i, WordleGWindow.PRESENT_COLOR);
+                        temp1 = temp1.substring(temp1.toUpperCase().indexOf(gw.getSquareLetter(row,c)));
+                    }
                 }
                 else {
                     gw.setSquareColor(row,c, WordleGWindow.MISSING_COLOR);
@@ -87,13 +93,13 @@ public class Wordle {
 
     public static void main(String[] args) {
         new Wordle().run();
-        /*
+        
         gw.setSquareLetter(0,0,Word.substring(0,1));
         gw.setSquareLetter(0,1,Word.substring(1,2));
         gw.setSquareLetter(0,2,Word.substring(2,3));
         gw.setSquareLetter(0,3,Word.substring(3,4));
         gw.setSquareLetter(0,4,Word.substring(4));
-        */
+        
 
     }
 
