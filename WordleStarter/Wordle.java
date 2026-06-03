@@ -14,7 +14,7 @@ public class Wordle {
     public void run() {
         gw = new WordleGWindow();
         gw.addEnterListener((s) ->  enterAction(s));
-        gw.addEnterListener((s) ->  enterAction(s));
+        
         
     }
 
@@ -27,7 +27,7 @@ public class Wordle {
         if(isLegalWord(s) == true){
             
             correction(s);
-            increaseRow();
+            
             
             gw.showMessage("Legal word, good job");
             
@@ -58,19 +58,32 @@ public class Wordle {
     }
     private void correction(String w){
             
-        String unmatched = Word;
+        String unmatched = Word.toUpperCase();
         for(int co = 0; co < WordleGWindow.N_COLS;co++){
-            char ch = gw.getSquareLetter(row,co).charAt(0);
-            if(Word.charAt(0) == ch){
+            char ch = gw.getSquareLetter(row,co).toUpperCase().charAt(0);
+            if(Word.toUpperCase().charAt(co) == ch){
                 gw.setSquareColor(row,co,WordleGWindow.CORRECT_COLOR);
+                gw.setKeyColor(unmatched.substring(co,co+1),WordleGWindow.CORRECT_COLOR);
             }else {
-                int index = unmatched.indexOf(ch);
+                int index = unmatched.toUpperCase().indexOf(ch);
                 if(index == -1){
                     gw.setSquareColor(row,co,WordleGWindow.MISSING_COLOR);
+                    if(gw.getKeyColor(unmatched.substring(co,co+1)) == WordleGWindow.CORRECT_COLOR){
+                        break;
+                    }
+                    else{
+                        gw.setKeyColor(unmatched.substring(co,co+1),WordleGWindow.MISSING_COLOR);
+                    }
                 }
                 else{
-                    gw.setSquareColor(row,co,WordleGWindow.CORRECT_COLOR);
-                    unmatched = unmatched.replaceFirst(""+ch, "");
+                    gw.setSquareColor(row,co,WordleGWindow.PRESENT_COLOR);
+                    unmatched = unmatched.toUpperCase().replaceFirst(""+ch, "");
+                    if(gw.getKeyColor(unmatched.substring(co,co+1)) == WordleGWindow.CORRECT_COLOR){
+                        break;
+                    }
+                    else{
+                        gw.setKeyColor(unmatched.substring(co,co+1),WordleGWindow.PRESENT_COLOR);
+                    }
                 }
             }
         }
@@ -112,7 +125,7 @@ public class Wordle {
 
     }
     static private void increaseRow(){
-        if(row!= 5 ){   
+        if(row != 5 ){   
             row++;
         }
     }
@@ -125,11 +138,11 @@ public class Wordle {
     public static void main(String[] args) {
         new Wordle().run();
         
-        gw.setSquareLetter(0,0,Word.substring(0,1));
-        gw.setSquareLetter(0,1,Word.substring(1,2));
-        gw.setSquareLetter(0,2,Word.substring(2,3));
-        gw.setSquareLetter(0,3,Word.substring(3,4));
-        gw.setSquareLetter(0,4,Word.substring(4));
+        gw.setSquareLetter(0,0,Word.substring(0,1).toUpperCase());
+        gw.setSquareLetter(0,1,Word.substring(1,2).toUpperCase());
+        gw.setSquareLetter(0,2,Word.substring(2,3).toUpperCase());
+        gw.setSquareLetter(0,3,Word.substring(3,4).toUpperCase());
+        gw.setSquareLetter(0,4,Word.substring(4).toUpperCase());
         
 
     }
