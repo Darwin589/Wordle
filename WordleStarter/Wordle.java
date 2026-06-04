@@ -24,17 +24,19 @@ public class Wordle {
  */
 
     public void enterAction(String s) {
-        if(isLegalWord(s) == true){
+        while(row != 5){
+            if(isLegalWord(s) == true){
+                
+                correction(s);
+                increaseRow();
             
-            correction(s);
-            KeyColors(s);
             
+                gw.showMessage("Legal word, good job");
             
-            gw.showMessage("Legal word, good job");
-            
-        }
-        else{
-            gw.showMessage("try again, not a legal word");
+            }
+            else{
+                gw.showMessage("try again, not a legal word");
+            }
         }
         }
     private boolean isLegalWord(String word){
@@ -64,29 +66,53 @@ public class Wordle {
             char ch = gw.getSquareLetter(row,co).toUpperCase().charAt(0);
             if(Word.toUpperCase().charAt(co) == ch){
                 gw.setSquareColor(row,co,WordleGWindow.CORRECT_COLOR);
-                gw.setKeyColor(unmatched.substring(co,co+1),WordleGWindow.CORRECT_COLOR);
+                //gw.setKeyColor(unmatched.substring(co,co+1),WordleGWindow.CORRECT_COLOR);
             }else {
                 int index = unmatched.toUpperCase().indexOf(ch);
                 if(index == -1){
                     gw.setSquareColor(row,co,WordleGWindow.MISSING_COLOR);
+                    /*
                     if(gw.getKeyColor(unmatched.substring(co,co+1)) == WordleGWindow.CORRECT_COLOR){
                         break;
                     }
                     else{
                         gw.setKeyColor(unmatched.substring(co,co+1),WordleGWindow.MISSING_COLOR);
                     }
+                    */
                 }
                 else{
                     gw.setSquareColor(row,co,WordleGWindow.PRESENT_COLOR);
                     unmatched = unmatched.toUpperCase().replaceFirst(""+ch, "");
+                    /*
                     if(gw.getKeyColor(unmatched.substring(co,co+1)) == WordleGWindow.CORRECT_COLOR){
                         break;
                     }
                     else{
                         gw.setKeyColor(unmatched.substring(co,co+1),WordleGWindow.PRESENT_COLOR);
                     }
+                    */
                 }
             }
+            if(gw.getSquareColor(row,co)== WordleGWindow.CORRECT_COLOR){
+                gw.setKeyColor(gw.getSquareLetter(row,co),WordleGWindow.CORRECT_COLOR);
+            }
+            else if(gw.getSquareColor(row,co)== WordleGWindow.PRESENT_COLOR){
+                if(gw.getKeyColor(gw.getSquareLetter(row,co)) == WordleGWindow.CORRECT_COLOR){
+                    break;
+                }
+                else{
+                    gw.setKeyColor(gw.getSquareLetter(row,co), WordleGWindow.PRESENT_COLOR);
+                }
+            }
+            else{
+                if(gw.getKeyColor(gw.getSquareLetter(row,co)) == WordleGWindow.CORRECT_COLOR || gw.getKeyColor(gw.getSquareLetter(row,co)) == WordleGWindow.PRESENT_COLOR){
+                    break;
+                }
+                else{
+                    gw.setKeyColor(gw.getSquareLetter(row,co), WordleGWindow.MISSING_COLOR);
+                }
+            }
+
         }
         
         /*
