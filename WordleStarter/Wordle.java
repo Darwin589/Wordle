@@ -13,7 +13,7 @@ public class Wordle {
 
     public void run() {
         gw = new WordleGWindow();
-        gw.addEnterListener((s) ->  enterAction(s));
+        gw.addEnterListener((s) ->  enterAction(s) );
         
         
     }
@@ -24,12 +24,11 @@ public class Wordle {
  */
 
     public void enterAction(String s) {
-        while(row != 5){
+        
             if(isLegalWord(s) == true){
                 
                 correction(s);
                 increaseRow();
-            
             
                 gw.showMessage("Legal word, good job");
             
@@ -37,7 +36,7 @@ public class Wordle {
             else{
                 gw.showMessage("try again, not a legal word");
             }
-        }
+        
         }
     private boolean isLegalWord(String word){
         String [] dictionary = WordleDictionary.FIVE_LETTER_WORDS;
@@ -160,6 +159,7 @@ public class Wordle {
     static private void increaseRow(){
         if(row != 5 ){   
             row++;
+            gw.setCurrentRow(row);
         }
     }
      static String [] random = WordleDictionary.FIVE_LETTER_WORDS;
