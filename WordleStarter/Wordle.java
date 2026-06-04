@@ -27,6 +27,7 @@ public class Wordle {
         if(isLegalWord(s) == true){
             
             correction(s);
+            KeyColors(s);
             
             
             gw.showMessage("Legal word, good job");
@@ -119,7 +120,13 @@ public class Wordle {
             */
 
         }
-    
+        private void KeyColors(String s){
+            for(int col =0; col< WordleGWindow.N_COLS;col++ ){
+                if(gw.getSquareColor(row,col) == WordleGWindow.CORRECT_COLOR){
+                    gw.setKeyColor(gw.getSquareLetter(row,col),WordleGWindow.CORRECT_COLOR);
+                }
+            }
+        }
     static private void changeWord(){
         Word = random[(int)(Math.random()*WordleDictionary.FIVE_LETTER_WORDS.length+1)];
 
