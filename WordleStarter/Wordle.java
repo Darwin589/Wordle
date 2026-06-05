@@ -29,8 +29,15 @@ public class Wordle {
                 
                 correction(s);
                 increaseRow();
-            
                 gw.showMessage("Legal word, good job");
+                if(s.equalsIgnoreCase(Word)){
+                    gw.showMessage("Good Job, you guessed the word correctly "); 
+                    changeWord();
+                }
+                if(gw.getCurrentRow()== 5 && !s.equalsIgnoreCase(Word)){
+                    gw.showMessage("Better luck next time the word was: "+Word);
+                }
+                
             
             }
             else{
@@ -97,7 +104,7 @@ public class Wordle {
             }
             else if(gw.getSquareColor(row,co)== WordleGWindow.PRESENT_COLOR){
                 if(gw.getKeyColor(gw.getSquareLetter(row,co)) == WordleGWindow.CORRECT_COLOR){
-                    break;
+                    
                 }
                 else{
                     gw.setKeyColor(gw.getSquareLetter(row,co), WordleGWindow.PRESENT_COLOR);
@@ -105,7 +112,7 @@ public class Wordle {
             }
             else{
                 if(gw.getKeyColor(gw.getSquareLetter(row,co)) == WordleGWindow.CORRECT_COLOR || gw.getKeyColor(gw.getSquareLetter(row,co)) == WordleGWindow.PRESENT_COLOR){
-                    break;
+                    
                 }
                 else{
                     gw.setKeyColor(gw.getSquareLetter(row,co), WordleGWindow.MISSING_COLOR);
@@ -145,19 +152,22 @@ public class Wordle {
             */
 
         }
+        /**\
         private void KeyColors(String s){
             for(int col =0; col< WordleGWindow.N_COLS;col++ ){
                 if(gw.getSquareColor(row,col) == WordleGWindow.CORRECT_COLOR){
                     gw.setKeyColor(gw.getSquareLetter(row,col),WordleGWindow.CORRECT_COLOR);
                 }
             }
+            
         }
+        */
     static private void changeWord(){
         Word = random[(int)(Math.random()*WordleDictionary.FIVE_LETTER_WORDS.length+1)];
 
     }
     static private void increaseRow(){
-        if(row != 5 ){   
+        if(row != 6 ){   
             row++;
             gw.setCurrentRow(row);
         }
@@ -171,11 +181,11 @@ public class Wordle {
     public static void main(String[] args) {
         new Wordle().run();
         
-        gw.setSquareLetter(0,0,Word.substring(0,1).toUpperCase());
-        gw.setSquareLetter(0,1,Word.substring(1,2).toUpperCase());
-        gw.setSquareLetter(0,2,Word.substring(2,3).toUpperCase());
-        gw.setSquareLetter(0,3,Word.substring(3,4).toUpperCase());
-        gw.setSquareLetter(0,4,Word.substring(4).toUpperCase());
+        gw.setSquareLetter(5,0,Word.substring(0,1).toUpperCase());
+        gw.setSquareLetter(5,1,Word.substring(1,2).toUpperCase());
+        gw.setSquareLetter(5,2,Word.substring(2,3).toUpperCase());
+        gw.setSquareLetter(5,3,Word.substring(3,4).toUpperCase());
+        gw.setSquareLetter(5,4,Word.substring(4).toUpperCase());
         
 
     }
