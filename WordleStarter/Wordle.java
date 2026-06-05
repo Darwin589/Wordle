@@ -34,7 +34,7 @@ public class Wordle {
                     gw.showMessage("Good Job, you guessed the word correctly "); 
                     changeWord();
                 }
-                if(gw.getCurrentRow()== 5 && !s.equalsIgnoreCase(Word)){
+                if(gw.getCurrentRow() > 5 && !s.equalsIgnoreCase(Word)){
                     gw.showMessage("Better luck next time the word was: "+Word);
                 }
                 
@@ -180,13 +180,13 @@ public class Wordle {
 
     public static void main(String[] args) {
         new Wordle().run();
-        
+        /*
         gw.setSquareLetter(5,0,Word.substring(0,1).toUpperCase());
         gw.setSquareLetter(5,1,Word.substring(1,2).toUpperCase());
         gw.setSquareLetter(5,2,Word.substring(2,3).toUpperCase());
         gw.setSquareLetter(5,3,Word.substring(3,4).toUpperCase());
         gw.setSquareLetter(5,4,Word.substring(4).toUpperCase());
-        
+        */
 
     }
 
