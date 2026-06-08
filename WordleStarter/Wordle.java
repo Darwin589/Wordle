@@ -27,17 +27,21 @@ public class Wordle {
         
             if(isLegalWord(s) == true){
                 
+                
                 correction(s);
-                increaseRow();
                 gw.showMessage("Legal word, good job");
                 if(s.equalsIgnoreCase(Word)){
                     gw.showMessage("Good Job, you guessed the word correctly "); 
                     changeWord();
                 }
-                if(gw.getCurrentRow() > 5 && !s.equalsIgnoreCase(Word)){
+                /*
+                System.out.println("hello");
+                System.out.print(gw.getCurrentRow());
+                */
+                if(gw.getCurrentRow() == 5 && !s.equalsIgnoreCase(Word)){
                     gw.showMessage("Better luck next time the word was: "+Word);
                 }
-                
+                increaseRow();
             
             }
             else{
@@ -167,7 +171,7 @@ public class Wordle {
 
     }
     static private void increaseRow(){
-        if(row != 6 ){   
+        if(row != 5 ){   
             row++;
             gw.setCurrentRow(row);
         }
