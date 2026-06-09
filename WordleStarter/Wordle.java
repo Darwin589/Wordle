@@ -34,12 +34,14 @@ public class Wordle {
                     count++;
                     gw.showMessage("Good Job, you guessed the word correctly "+count+" times"); 
                     changeWord();
+                    System.out.println(Word);
+                    /*
                     gw.setSquareLetter(5,0,Word.substring(0,1).toUpperCase());
                     gw.setSquareLetter(5,1,Word.substring(1,2).toUpperCase());
                     gw.setSquareLetter(5,2,Word.substring(2,3).toUpperCase());
                     gw.setSquareLetter(5,3,Word.substring(3,4).toUpperCase());
                     gw.setSquareLetter(5,4,Word.substring(4).toUpperCase());
-                    
+                    */
                 }
                 /*
                 System.out.println("hello");
@@ -192,6 +194,7 @@ public class Wordle {
 
     public static void main(String[] args) {
         new Wordle().run();
+        System.out.println(Word);
         /*
         gw.setSquareLetter(5,0,Word.substring(0,1).toUpperCase());
         gw.setSquareLetter(5,1,Word.substring(1,2).toUpperCase());
