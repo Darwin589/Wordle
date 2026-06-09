@@ -837,13 +837,13 @@ public class WordleDictionary {
         "yikes", "yipes", "yippy", "yodel", "yodhs", "yodle", "yogas",
         "yogic", "yogis", "yoked", "yokel", "yokes", "yolks", "yonic",
         "yonis", "yores", "young", "yours", "youse", "youth", "yowie",
-        "yowls", "yucca", "yucks", "yucky", "yummy", "yurts", "zarfs",
-        "zaxes", "zayin", "zeals", "zebec", "zebra", "zeins", "zeros",
-        "zests", "zesty", "zetas", "zibet", "zilch", "zills", "zincs",
-        "zines", "zings", "zingy", "zippy", "zitis", "zlote", "zloty",
-        "zoaea", "zoeae", "zoeas", "zombi", "zonal", "zoned", "zoner",
-        "zones", "zonks", "zooey", "zooid", "zooks", "zooms", "zoons",
-        "zoril", "zowie", "zymes"
+        "yowls", "yucca", "yucks", "yucky", "yummy", "yurts", "zaids",
+        "zarfs","zaxes", "zayin", "zeals", "zebec", "zebra", "zeins", 
+        "zeros","zests", "zesty", "zetas", "zibet", "zilch", "zills", 
+        "zincs","zines", "zings", "zingy", "zippy", "zitis", "zlote", 
+        "zloty","zoaea", "zoeae", "zoeas", "zombi", "zonal", "zoned", 
+        "zoner","zones", "zonks", "zooey", "zooid", "zooks", "zooms", 
+        "zoons","zoril", "zowie", "zymes"
     };
 
     private WordleDictionary() {

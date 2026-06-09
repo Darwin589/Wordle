@@ -31,8 +31,15 @@ public class Wordle {
                 correction(s);
                 gw.showMessage("Legal word, good job");
                 if(s.equalsIgnoreCase(Word)){
-                    gw.showMessage("Good Job, you guessed the word correctly "); 
+                    count++;
+                    gw.showMessage("Good Job, you guessed the word correctly "+count+" times"); 
                     changeWord();
+                    gw.setSquareLetter(5,0,Word.substring(0,1).toUpperCase());
+                    gw.setSquareLetter(5,1,Word.substring(1,2).toUpperCase());
+                    gw.setSquareLetter(5,2,Word.substring(2,3).toUpperCase());
+                    gw.setSquareLetter(5,3,Word.substring(3,4).toUpperCase());
+                    gw.setSquareLetter(5,4,Word.substring(4).toUpperCase());
+                    
                 }
                 /*
                 System.out.println("hello");
@@ -179,6 +186,7 @@ public class Wordle {
      static String [] random = WordleDictionary.FIVE_LETTER_WORDS;
      static String Word= random[(int)(Math.random()*WordleDictionary.FIVE_LETTER_WORDS.length+1)]; 
      static int row =0;
+     static int count=0;
 
 /* Startup code */
 
@@ -191,6 +199,7 @@ public class Wordle {
         gw.setSquareLetter(5,3,Word.substring(3,4).toUpperCase());
         gw.setSquareLetter(5,4,Word.substring(4).toUpperCase());
         */
+        
 
     }
 
