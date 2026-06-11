@@ -33,7 +33,9 @@ public class Wordle {
                 if(s.equalsIgnoreCase(Word)){
                     count++;
                     gw.showMessage("Good Job, you guessed the word correctly "+count+" times"); 
+                    if(gw.getCurrentRow()!= 5){
                     changeWord();
+                    }
                     System.out.println(Word);
                     /*
                     gw.setSquareLetter(5,0,Word.substring(0,1).toUpperCase());
